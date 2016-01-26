@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTables", "TimeTables\TimeTables.csproj", "{B8D38B65-404F-412C-98EC-E8B3BADCC13E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TimeTablesSetup", "TimeTablesSetup\TimeTablesSetup.vdproj", "{76611635-C13D-469B-8B1A-1AEA86EF6E26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8D38B65-404F-412C-98EC-E8B3BADCC13E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8D38B65-404F-412C-98EC-E8B3BADCC13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8D38B65-404F-412C-98EC-E8B3BADCC13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8D38B65-404F-412C-98EC-E8B3BADCC13E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76611635-C13D-469B-8B1A-1AEA86EF6E26}.Debug|Any CPU.ActiveCfg = Debug
+		{76611635-C13D-469B-8B1A-1AEA86EF6E26}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
