@@ -4,8 +4,8 @@ using System.Text;
 using System.Collections;
 using System.IO;
 using System.Windows.Forms;
-using System.Data.SQLite;
 using System.Data.Common;
+using System.Data.SQLite;
 
 namespace TimeTables
 {
@@ -171,7 +171,37 @@ namespace TimeTables
             htbList.Add(htbIDClassMaster);
             htbList.Add(null);
             htbList.Add(null);
-            
+            DirectoryInfo basicinfodir = new DirectoryInfo(Basic_HTB_Info.baseFilePath+@"\BasicInfo");
+            if (!basicinfodir.Exists)
+            {
+                basicinfodir.Create();
+                for (int i = 0; i < BasicInfoFileNames.Length; i++)
+                {
+                    StreamReader sr = new StreamReader(Basic_HTB_Info.baseFilePath + BasicInfoFileNames[i], Encoding.Default);
+                    using (StreamWriter sw = File.CreateText(Basic_HTB_Info.baseFilePath + BasicInfoFileNames[i]))
+                    { 
+                    }
+                }
+            }
+            /*///////////
+            if (!File.Exists(path))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("Welcome");
+                }
+            }
+            // Open the file to read from.
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+            ///////////*/
             for (int i = 0; i < BasicInfoFileNames.Length; i++)
             {
                 log(BasicInfoFileNames[i]);
@@ -1198,6 +1228,7 @@ namespace TimeTables
             Controls.Add(tblp);
         }
     }
+    
     public class SQLite_ESData 
     {
         public SQLite_ESData()
@@ -1348,4 +1379,5 @@ namespace TimeTables
             return txt;
         }
     }
+
 }
