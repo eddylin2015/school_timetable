@@ -5,7 +5,7 @@ using System.Collections;
 using System.IO;
 using System.Windows.Forms;
 using System.Data.Common;
-using System.Data.SQLite;
+//using System.Data.SQLite;
 
 namespace TimeTables
 {
@@ -1228,7 +1228,7 @@ namespace TimeTables
             Controls.Add(tblp);
         }
     }
-    
+    /*
     public class SQLite_ESData 
     {
         public SQLite_ESData()
@@ -1378,6 +1378,6 @@ namespace TimeTables
             dr.Dispose();
             return txt;
         }
-    }
+    }*/
 
 }

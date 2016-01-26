@@ -6,53 +6,74 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.Common;
+using System.IO;
 
 namespace TimeTables
 {
     public partial class FormAssgControl : Form
     {
+        private String path = Basic_HTB_Info.baseFilePath + @"\FORMASSG_config.txt";
         public FormAssgControl()
         {
             InitializeComponent();
-            //MessageBox.Show(Basic_HTB_Info.baseFilePath);
-            SQLite_ESData sqe = new SQLite_ESData(Basic_HTB_Info.baseFilePath, "data");
-            DbDataReader dr =sqe.Reader("Select * from data_tbl;");
-            while (dr.Read())
-            {
-                textBox1.Text = dr.GetString(0);
-                textBox2.Text = dr.GetString(1);
-                textBox3.Text = dr.GetString(2);
 
+            if (!File.Exists(path))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("1,2,3,4,5,6,7,8,10,11,12,13");
+                    sw.WriteLine("{11,12,13}2");
+                    sw.WriteLine("2,3,4,5,6,7,8");
+                }
             }
-            dr.Close();
-            dr.Dispose();
-            MessageBox.Show(sqe.ViewTableTxt("data_tbl"));
-            sqe.Close_Conn();
+            else
+            {
+                using (StreamReader sr = File.OpenText(path))
+                {
+                    string s = "";
+                    int cnt = 0;
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        cnt++;
+                        switch (cnt)
+                        {
+                            case 1:textBox1.Text=s;break;
+                            case 2: textBox2.Text = s; break;
+                            case 3: textBox3.Text = s; break;
+                        }
+                    }
+                }
+            }
+
+            //MessageBox.Show(Basic_HTB_Info.baseFilePath);
             textBox1.TextChanged += new EventHandler(textBox1_TextChanged);
             textBox2.TextChanged += new EventHandler(textBox2_TextChanged);
             textBox3.TextChanged += new EventHandler(textBox3_TextChanged);
         }
-
+        private void  edit_txtfile()
+        {
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine(textBox1.Text);
+                sw.WriteLine(textBox2.Text);
+                sw.WriteLine(textBox3.Text);
+            }
+        }
         void textBox3_TextChanged(object sender, EventArgs e)
         {
-            SQLite_ESData.GetInst.Open_Conn();
-            SQLite_ESData.GetInst.Exec(String.Format("update data_tbl set MAIN_SUBJ_IDs='{0}';", textBox3.Text));
-            SQLite_ESData.GetInst.Close_Conn();
 
+            edit_txtfile();
         }
         void textBox2_TextChanged(object sender, EventArgs e)
         {
-            SQLite_ESData.GetInst.Open_Conn();
-            SQLite_ESData.GetInst.Exec(String.Format("update data_tbl set ASSG_SUBJ_PLACE_SET='{0}';",textBox2.Text));
-            SQLite_ESData.GetInst.Close_Conn();
-            
+
+            edit_txtfile();
         }
 
         void textBox1_TextChanged(object sender, EventArgs e)
         {
-            SQLite_ESData.GetInst.Open_Conn();
-            SQLite_ESData.GetInst.Exec(String.Format("update data_tbl set ASSG_SUBJ_IDs='{0}';", textBox1.Text));
-            SQLite_ESData.GetInst.Close_Conn();
+            edit_txtfile();
         }
 
         private void button1_Click(object sender, EventArgs e)
