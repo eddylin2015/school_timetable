@@ -25,6 +25,7 @@ namespace TimeTables
                     sw.WriteLine("1,2,3,4,5,6,7,8,10,11,12,13");
                     sw.WriteLine("{11,12,13}2");
                     sw.WriteLine("2,3,4,5,6,7,8");
+                    sw.Flush();
                 }
             }
             else
