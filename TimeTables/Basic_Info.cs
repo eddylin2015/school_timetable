@@ -235,7 +235,7 @@ namespace TimeTables
                 for (int i = 0; i < BasicInfoFileNames.Length; i++)
                 {
                    // StreamReader sr = new StreamReader(Basic_HTB_Info.baseFilePath + BasicInfoFileNames[i], Encoding.Default);
-                    using (StreamWriter sw = File.CreateText(Basic_HTB_Info.baseFilePath + BasicInfoFileNames[i]))
+                    using (StreamWriter sw = new StreamWriter(Basic_HTB_Info.baseFilePath + BasicInfoFileNames[i],false,Encoding.Default))
                     {
                         sw.Write(BasicInfoFileContent[i]);
                         sw.Flush();
