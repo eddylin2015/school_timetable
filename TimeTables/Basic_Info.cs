@@ -183,25 +183,7 @@ namespace TimeTables
                     }
                 }
             }
-            /*///////////
-            if (!File.Exists(path))
-            {
-                // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(path))
-                {
-                    sw.WriteLine("Welcome");
-                }
-            }
-            // Open the file to read from.
-            using (StreamReader sr = File.OpenText(path))
-            {
-                string s = "";
-                while ((s = sr.ReadLine()) != null)
-                {
-                    Console.WriteLine(s);
-                }
-            }
-            ///////////*/
+            
             for (int i = 0; i < BasicInfoFileNames.Length; i++)
             {
                 log(BasicInfoFileNames[i]);
