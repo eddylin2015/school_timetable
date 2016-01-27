@@ -140,32 +140,17 @@ namespace TimeTables
                 msys.MenuItems.Add(new MenuItem(string.Format("{0}.{1}", i, htbs.htbIDTeacher[i]), this.menuTeacherNoItem_click));
                 subj_With_Teacher.MenuItems.Add(new MenuItem(string.Format("{0}.{1} Subject_List", i, htbs.htbIDTeacher[i]), this.menuFormClassNoTimeTableDoubleClick_Teacher));
             }
-            /*
-                TeachernoInput ti = new TeachernoInput("Teacher No.");
-                String[] stra=ti.out_res.Split(',');
-                foreach (String s in stra)
-                {
-                    if(Basic_HTB_Info.GetInstance().htbTeacherID.ContainsKey(s))
-                    {
-                        int akey = int.Parse(Basic_HTB_Info.GetInstance().htbTeacherID[s].ToString());
-                        FormClassNoTimeTableDoubleClick_Action aTT = new FormClassNoTimeTableDoubleClick_Action(mi.Text, new C_FormClassNoTimeTableDoubleClick_Teacher(akey));
-                        aTT.MdiParent = this;
-                        aTT.updateList();
-                        aTT.button_ADD.Enabled = false;
-                        aTT.Show();
-                    }
-                }
-            
-            }));*/
+           
             msys = fmainMenu.MenuItems.Add("F.報表");
-            msys.MenuItems.Add("F1.課程安排Report ClassSubjectTeacherCrosorTable", mnuReport_Cross_Table);
-            msys.MenuItems.Add("F2.課程周節安排Report ClassSubjectWeekLessonCrosorTable", mnuReport_Cross_Week_Table);
-            msys.MenuItems.Add("F3.教師課程安排Report Teacher TimeTable",mnuReport_Teacher_TimeTable);
-            msys.MenuItems.Add("F4.班級課程安排Report Class TimeTable",mnuReport_Class_TimeTable);
-            msys.MenuItems.Add("F5.周/節/(班級某課程)Report Class TimeTable", mnuReport_WeekDay_Course_TimeTable);
-
+            msys.MenuItems.Add("F1.教師課程安排Report Teacher TimeTable", mnuReport_Teacher_TimeTable);
+            msys.MenuItems.Add("F2.班級課程安排Report Class TimeTable", mnuReport_Class_TimeTable);
             msys.MenuItems.Add("-");
-            msys.MenuItems.Add("F6.上傳報至250伺服器", mnuReport_UploadTo250);
+            msys.MenuItems.Add("F3.課程安排Report ClassSubjectTeacherCrosorTable", mnuReport_Cross_Table);
+            msys.MenuItems.Add("F4.課程周節安排Report ClassSubjectWeekLessonCrosorTable", mnuReport_Cross_Week_Table);
+            msys.MenuItems.Add("-");
+            msys.MenuItems.Add("F5.周/節/(班級某課程)Report Class TimeTable", mnuReport_WeekDay_Course_TimeTable);
+            msys.MenuItems.Add("-");
+            msys.MenuItems.Add("F6.上傳報至伺服器", mnuReport_UploadTo250);
 
             
             
@@ -238,7 +223,8 @@ namespace TimeTables
         }
         private void mnuReport_UploadTo250(Object sender, EventArgs e)
         {
-
+            MessageBox.Show("not implement!");
+            /*
             Basic_HTB_Info.GetInstance().Export_Cross_Week_Table(Basic_HTB_Info.baseFilePath + @"\report_cross_week_table.htm");
             Basic_HTB_Info.GetInstance().Export_Cross_Table(Basic_HTB_Info.baseFilePath + @"\report_cross_table.htm");
             Basic_HTB_Info.GetInstance().Export_Teacher_TimeTable(Basic_HTB_Info.baseFilePath + @"\report_teacher_timetable.htm");
@@ -246,7 +232,7 @@ namespace TimeTables
             ProcessStartInfo pi = new ProcessStartInfo(Basic_HTB_Info.baseFilePath + @"\FTPUploadTimeTableReports.exe");
             pi.UseShellExecute = true;
             Process p = Process.Start(pi);
-            p.WaitForExit();
+            p.WaitForExit();*/
         }
         private void mnuReport_Cross_Table(Object sender, EventArgs e)
         {
