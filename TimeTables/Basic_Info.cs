@@ -150,6 +150,63 @@ namespace TimeTables
             string[] BasicInfoFileNames = new string[] { 
                 @"\BasicInfo\Teacher.dat",@"\BasicInfo\Class.dat", @"\BasicInfo\Subject.dat" ,@"\BasicInfo\LessonTimeDesc.dat",@"\BasicInfo\ClassMaster.dat"
             };
+            string[] BasicInfoFileContent = new string[] { 
+                @"1.方文山.方
+2.三毛.毛
+3.優雅.雅
+4.萍萍.萍
+5.古詩.古
+6.朱丹.朱
+7.李詩.詩
+8.何燕.燕
+9.余丹.余",@"1.SG1A(SG1A/初一信)
+2.SG1B(SG1B/初一望)
+3.SG1C(SG1C/初一愛)
+4.SG1D(SG1D/初一善)", @"1.公民.公民
+2.中文.中
+3.英文.英
+4.英文文法.文法
+5.英文會話.會話
+6.數學.數
+7.代數.代數
+8.幾何.幾何
+9.聖經.聖
+10.體育.育
+11.電腦.腦
+12.電腦繪圖.繪圖
+13.倉頡輸入.倉頡
+14.普通話.普
+15.音樂.樂
+16.藝術.藝
+17.班務.班務
+18.週會.週會
+19.物理.物
+20.化學.化
+21.生物.生
+22.歷史.歷
+23.地理.地
+24.文學.文學" ,@"1.8:10-8:25 早操 8:25-8:30預備鐘 8:30-8:40 早讀 / 早訓
+2.8:40<br>/<br>9:20
+11.9:20-9:30 小息 9:30-9:35預備鐘
+12.9:35<br>/<br>10:15
+21.10:15-10:20預備鐘
+22.10:20<br>/<br>11:00
+31.11:00-11:05 小息 11:05-11:10預備鐘
+32.11:10<br>/<br>11:50
+41.11:50-11:55預備鐘
+42.11:55<br>/<br>12:35
+51.12:35-13:55 午休 13:55-14:00 預備鐘
+52.14:00<br>/1<br>14:40
+61.14:40-14:45 預備鐘
+62.14:45<br>/<br>15:25
+71.15:25-15:30小息 15:30-15:35預備鐘
+72.15:35<br>/<br>16:15
+81.16:15-16:20 預備鐘
+82.16:20<br>/<br>17:00",@"1.方文山.方
+2.三毛.毛
+3.優雅.雅
+4.萍萍.萍"
+            };
 
             List<Hashtable> htbList = new List<Hashtable>();
             htbList.Add(htbIDTeacher);
@@ -179,7 +236,9 @@ namespace TimeTables
                 {
                    // StreamReader sr = new StreamReader(Basic_HTB_Info.baseFilePath + BasicInfoFileNames[i], Encoding.Default);
                     using (StreamWriter sw = File.CreateText(Basic_HTB_Info.baseFilePath + BasicInfoFileNames[i]))
-                    { 
+                    {
+                        sw.Write(BasicInfoFileContent[i]);
+                        sw.Flush();
                     }
                 }
             }

@@ -59,6 +59,7 @@ namespace TimeTables
                 sw.WriteLine(textBox1.Text);
                 sw.WriteLine(textBox2.Text);
                 sw.WriteLine(textBox3.Text);
+                sw.Flush();
             }
         }
         void textBox3_TextChanged(object sender, EventArgs e)
